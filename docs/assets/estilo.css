@@ -293,7 +293,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 
 .referencias { padding-left: 20px; font-size: 0.93rem; }
 
-.referencias li { margin: 0 0 10px; text-align: left; }
+.referencias li { margin: 0 0 10px; text-align: left; overflow-wrap: anywhere; }
 
 .rodape {
   margin-top: 48px;
