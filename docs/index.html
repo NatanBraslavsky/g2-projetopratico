@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartão na Mesa — Cartões no Brasileirão Série A (2020–2023)</title>
+  <meta name="description" content="Artigo acadêmico sobre a distribuição de cartões no Campeonato Brasileiro Série A de 2020 a 2023: variação entre árbitros, efeito da torcida e influência do placar.">
+  <meta name="author" content="Natan Braslavsky">
+  <meta name="keywords" content="Análise de Dados, Python, Futebol, Arbitragem, Viés do Mandante, Princípios FAIR">
+  <meta name="citation_title" content="Cartão na Mesa: árbitros, torcida e placar na distribuição de cartões do Brasileirão Série A (2020–2023)">
+  <meta name="citation_author" content="Braslavsky, Natan">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_language" content="pt">
+  <meta name="dc.rights" content="CC-BY-4.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/estilo.css">
+</head>
+<body>
+<article class="artigo">
+
+  <header>
+    <h1>Cartão na Mesa: árbitros, torcida e placar na distribuição de cartões do Brasileirão Série A (2020–2023)</h1>
+    <p class="autores">Natan Braslavsky</p>
+    <p class="filiacao">Bacharelado em Sistemas de Informação — Universidade La Salle</p>
+    <p class="filiacao">Disciplina: Linguagem de Programação (Análise e Visualização de Dados com Python) · 6º período · 2026/2</p>
+
+    <div class="badges">
+      <img src="https://img.shields.io/badge/Python-3.13-3776AB?logo=python&amp;logoColor=white" alt="Python 3.13">
+      <img src="https://img.shields.io/badge/pandas-3.1.1-150458?logo=pandas&amp;logoColor=white" alt="pandas 3.1.1">
+      <img src="https://img.shields.io/badge/Plotly-5.24.1-3F4F75?logo=plotly&amp;logoColor=white" alt="Plotly 5.24.1">
+      <img src="https://img.shields.io/badge/c%C3%B3digo-MIT-green" alt="Licença do código: MIT">
+      <img src="https://img.shields.io/badge/dados%20e%20texto-CC--BY%204.0-lightgrey" alt="Licença dos dados e do texto: CC-BY 4.0">
+      <img src="https://img.shields.io/badge/FAIR-compliant-1e3a8a" alt="FAIR">
+    </div>
+
+    <a class="botao-repo" href="https://github.com/NatanBraslavsky/g2-projetopratico" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      Ver repositório no GitHub (código e dados)
+    </a>
+  </header>
+
+  <section class="resumo" aria-labelledby="resumo">
+    <h2 id="resumo">Resumo</h2>
+    <p>Cartões amarelos e vermelhos são decisões discricionárias da arbitragem e, por isso, um bom indicador de como fatores externos ao jogo podem influenciar o resultado de uma partida. Este estudo analisa as 1.520 partidas do Campeonato Brasileiro Série A de 2020 a 2023 e os 7.921 cartões registrados nelas, a partir de uma base aberta que traz cada cartão com o jogador e o minuto. Um pipeline em Python (pandas, NumPy e SciPy) converte datas escritas por extenso, corrige o público registrado com separador de milhar, desaninha listas JSON e reconstrói o placar de cada partida minuto a minuto. Três perguntas foram investigadas. Primeiro, os árbitros diferem de forma significativa: a média vai de 3,5 a 7,1 cartões por jogo (Kruskal–Wallis, p &lt; 0,001), e oito deles ficam fora dos limites de controle de um gráfico de funil. Segundo, o viés contra o visitante só aparece com torcida no estádio: com portões fechados, mandantes e visitantes receberam praticamente o mesmo número de amarelos (diferença de −0,04), enquanto com público o visitante recebeu 0,28 amarelo a mais por jogo, e a diferença cresce com o tamanho do público. Terceiro, 65% dos cartões saem no segundo tempo, e a maior taxa de punição é a do visitante que está vencendo na etapa final (4,1 cartões por 90 minutos). Os resultados reforçam, no contexto brasileiro, a evidência internacional de pressão social sobre a arbitragem.</p>
+    <p><b>Palavras-chave:</b> Arbitragem; Viés do mandante; Futebol brasileiro; Análise exploratória de dados; Python; Princípios FAIR.</p>
+  </section>
+
+  <nav class="sumario" aria-label="Sumário">
+    <strong>Sumário</strong>
+    <ol>
+      <li><a href="#introducao">Introdução</a></li>
+      <li><a href="#metodologia">Metodologia e Pipeline de Dados</a></li>
+      <li><a href="#resultados">Resultados e Discussão</a></li>
+      <li><a href="#conclusao">Conclusão</a></li>
+      <li><a href="#fair">Disponibilidade dos Dados e Declaração FAIR</a></li>
+      <li><a href="#referencias">Referências</a></li>
+    </ol>
+  </nav>
+
+  <section aria-labelledby="introducao">
+    <h2 id="introducao">1. Introdução</h2>
+    <p>No futebol, o árbitro decide em tempo real e sob pressão, e boa parte dessas decisões não pode ser revista pelo VAR: o cartão amarelo, a advertência mais frequente do jogo, quase nunca passa por revisão. Quando essas decisões pesam mais para um lado de forma sistemática, o resultado esportivo deixa de refletir só o desempenho em campo. Para clubes, comissões de arbitragem e torcedores, saber se esse desequilíbrio existe e de onde ele vem é uma questão de integridade da competição.</p>
+    <p>A literatura internacional encontrou um caso raro de experimento natural na pandemia de Covid-19: com os estádios vazios, a vantagem disciplinar do mandante diminuiu ou desapareceu em várias ligas europeias (ENDRICH; GESCHE, 2020; BRYSON <i>et al.</i>, 2021), em linha com estudos anteriores que já associavam o viés do árbitro à pressão da torcida (SUTTER; KOCHER, 2004; PETTERSSON-LIDBOM; PRIKS, 2010). O Brasileirão passou pela mesma situação: a temporada 2020 foi disputada inteira sem público, e a de 2021 só recebeu torcedores na reta final. Isso permite repetir a comparação com dados brasileiros.</p>
+    <p>Este trabalho usa uma base aberta com o registro de cada cartão por jogador e minuto e responde a três perguntas de pesquisa:</p>
+    <ul class="rq">
+      <li><b>RQ1.</b> Quanto o volume de cartões por partida varia entre árbitros, e quais árbitros se afastam do padrão da liga além do que o acaso explicaria?</li>
+      <li><b>RQ2.</b> A presença de torcida está associada a um viés disciplinar contra o time visitante?</li>
+      <li><b>RQ3.</b> Em que momentos da partida os cartões se concentram, e como a taxa de punição muda conforme o placar do momento?</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="metodologia">
+    <h2 id="metodologia">2. Metodologia e Pipeline de Dados</h2>
+
+    <h3 id="fonte">2.1 Fonte e granularidade</h3>
+    <p>A fonte primária é o conjunto <i>brasileirao_cartoes_20-23</i> (BRAL, 2024), publicado no Kaggle sob licença CC0 (domínio público) e extraído das súmulas estatísticas da Opta. O arquivo <code>partidas_20_23.csv</code> (1,34 MB, UTF-8, separador vírgula) tem <b>uma linha por partida</b>, 1.520 linhas e 17 colunas. Cartões e gols ficam em colunas com listas JSON, uma por tipo de evento e por lado, e cada item traz o jogador e o minuto. Por isso a base tem também uma segunda granularidade, de <b>evento</b>, que o pipeline extrai em uma tabela própria com 11.558 registros.</p>
+
+    <h3 id="tratamento">2.2 Estratégias de tratamento</h3>
+    <p>O arquivo é lido inteiramente como texto (<code>dtype=str</code>) para que nenhuma conversão implícita aconteça antes de ser auditada. As principais intervenções foram:</p>
+    <ul>
+      <li><b>Público com separador de milhar.</b> O valor <code>"12.089"</code> representa 12.089 torcedores, mas uma conversão numérica direta o lê como 12,089. O pipeline só aceita o padrão <code>\d{1,3}(\.\d{3})*</code>, remove os pontos e converte o resultado.</li>
+      <li><b>Valores ausentes declarados como texto.</b> 613 partidas trazem <code>"No data"</code> no público. Nada foi imputado: o valor vira <code>NaN</code> e, junto com a temporada, define a variável categórica <code>torcida</code>. Ausência de público em 2020 e 2021 é tratada como <i>portões fechados</i> (598 jogos, coerente com as restrições sanitárias da época). Os 15 casos de 2022 e 2023 ficam como <i>desconhecido</i> e saem das comparações da RQ2.</li>
+      <li><b>Datas por extenso.</b> Textos como <code>"25 de fevereiro de 2021 21:30"</code> são convertidos com uma expressão regular e um dicionário de meses em português.</li>
+      <li><b>Temporada.</b> A temporada 2020 terminou em fevereiro de 2021, então o ano da data não identifica o campeonato. A temporada é extraída da URL da fonte, e o resultado tem exatamente 380 jogos por edição.</li>
+      <li><b>Minutos com acréscimo.</b> Valores como <code>"90+3'"</code> são separados em minuto-base e acréscimo, e uma chave de ordenação (<code>90,03</code>) mantém a ordem cronológica.</li>
+      <li><b>Expulsões.</b> O segundo amarelo e o vermelho direto vêm em colunas separadas e não se sobrepõem. Por isso, <i>amarelos</i> = amarelos simples + segundos amarelos, <i>expulsões</i> = vermelhos diretos + segundos amarelos e <i>cartões</i> = amarelos + vermelhos diretos.</li>
+      <li><b>Nomes.</b> Textos passam por normalização Unicode (NFC) e limpeza de espaços. Os clubes ganham um nome curto padronizado, e o nome oficial é mantido em outra coluna.</li>
+    </ul>
+    <p>Nenhuma linha foi descartada. Cada etapa registra em <code>data/processed/relatorio_etl.json</code> quantas linhas leu, converteu, removeu ou sinalizou. O pipeline também confere que o total de gols das listas JSON bate com o placar oficial nas 1.520 partidas (zero divergências).</p>
+
+<pre><code><span class="tk-k">def</span> <span class="tk-f">converter_publico</span>(valor: str) -&gt; float:
+    texto = valor.strip()
+    <span class="tk-k">if</span> texto <span class="tk-k">in</span> {<span class="tk-s">""</span>, <span class="tk-s">"No data"</span>}:
+        <span class="tk-k">return</span> np.nan
+    <span class="tk-k">if not</span> re.fullmatch(<span class="tk-s">r"\d{1,3}(\.\d{3})*"</span>, texto):
+        <span class="tk-k">return</span> np.nan
+    <span class="tk-k">return</span> float(texto.replace(<span class="tk-s">"."</span>, <span class="tk-s">""</span>))
+
+
+<span class="tk-k">def</span> <span class="tk-f">converter_data</span>(valor: str) -&gt; pd.Timestamp:
+    padrao = re.fullmatch(<span class="tk-s">r"(\d{1,2}) de (\w+) de (\d{4}) (\d{1,2}):(\d{2})"</span>, valor.strip())
+    <span class="tk-k">if</span> padrao <span class="tk-k">is None</span>:
+        <span class="tk-k">return</span> pd.NaT
+    dia, mes, ano, hora, minuto = padrao.groups()
+    <span class="tk-k">return</span> pd.Timestamp(int(ano), MESES[mes.lower()], int(dia), int(hora), int(minuto))</code></pre>
+
+    <h3 id="metricas">2.3 Métricas derivadas</h3>
+    <p>Além das contagens por partida, foram criadas três métricas para responder às perguntas de pesquisa:</p>
+    <ul>
+      <li><b>Diferença disciplinar</b> (<code>dif_amarelos_vis_mand</code>): amarelos do visitante menos amarelos do mandante na mesma partida. Valores positivos indicam que o visitante foi mais punido.</li>
+      <li><b>Placar momentâneo</b>: para cada cartão, o saldo de gols do time punido logo antes do lance, obtido pela soma acumulada dos gols ordenados por minuto. Gols no mesmo minuto do cartão não entram, porque a ordem entre eles não pode ser determinada.</li>
+      <li><b>Taxa por exposição</b>: cartões por 90 minutos passados em cada situação de placar (perdendo, empatando ou vencendo), separada por tempo de jogo. Sem essa normalização, a situação “empatando” pareceria pouco punida só porque concentra o início das partidas, quando quase não há cartões.</li>
+    </ul>
+
+<pre><code><span class="tk-k">def</span> <span class="tk-f">adicionar_placar_momentaneo</span>(eventos: pd.DataFrame) -&gt; pd.DataFrame:
+    gols = eventos[<span class="tk-s">"tipo"</span>] == <span class="tk-s">"gol"</span>
+    eventos[<span class="tk-s">"_gm"</span>] = (gols &amp; (eventos[<span class="tk-s">"lado"</span>] == <span class="tk-s">"mandante"</span>)).astype(int)
+    eventos[<span class="tk-s">"_gv"</span>] = (gols &amp; (eventos[<span class="tk-s">"lado"</span>] == <span class="tk-s">"visitante"</span>)).astype(int)
+    chave = [<span class="tk-s">"partida_id"</span>, <span class="tk-s">"minuto_ordenacao"</span>]
+    por_minuto = eventos.groupby(chave)[[<span class="tk-s">"_gm"</span>, <span class="tk-s">"_gv"</span>]].sum()
+    acumulado = por_minuto.groupby(level=<span class="tk-n">0</span>).cumsum() - por_minuto
+    ...</code></pre>
+
+    <h3 id="persistencia">2.4 Persistência e análise estatística</h3>
+    <p>As duas tabelas tratadas (<code>partidas</code> e <code>eventos</code>) são gravadas em <b>Apache Parquet</b>, que preserva os tipos (inteiros anuláveis, categorias e datas), e em <b>CSV compactado com gzip</b>, para leitura em qualquer ferramenta. Como a distribuição de cartões é discreta e assimétrica, as comparações usam testes não paramétricos: Kruskal–Wallis com tamanho de efeito ε² (RQ1), Mann–Whitney e Wilcoxon (RQ2) e qui-quadrado de aderência para as taxas por exposição (RQ3). Os intervalos de confiança de 95% foram obtidos por <i>bootstrap</i> com 10.000 reamostragens e semente fixa (42), para que os resultados sejam reprodutíveis.</p>
+  </section>
+
+  <section aria-labelledby="resultados">
+    <h2 id="resultados">3. Resultados e Discussão</h2>
+
+    <div class="destaques">
+      <div class="destaque"><span class="valor">5,21</span><span class="rotulo">cartões por partida (DP 2,58)</span></div>
+      <div class="destaque"><span class="valor">7.921</span><span class="rotulo">cartões em 1.520 partidas</span></div>
+      <div class="destaque"><span class="valor">65%</span><span class="rotulo">dos cartões no 2º tempo</span></div>
+      <div class="destaque"><span class="valor">+0,31</span><span class="rotulo">amarelo a mais para o visitante com torcida</span></div>
+    </div>
+
+    <h3 id="descritiva">3.1 Panorama descritivo</h3>
+    <p>Uma partida típica teve 5 cartões (mediana), com intervalo interquartil de 3 a 7 e máximo de 16. A variância (6,65) é cerca de 28% maior que a média (5,21). Se todos os jogos tivessem a mesma propensão a cartões, a distribuição seguiria uma Poisson. A <a href="#fig1">Figura 1</a> mostra que há mais partidas com poucos (0 a 2) e com muitos (8 ou mais) cartões do que esse modelo prevê. Essa <b>sobredispersão</b> indica que alguma coisa diferencia os jogos, e as três perguntas de pesquisa investigam candidatos para isso. Seis partidas passaram do limite de Tukey (Q3 + 1,5 × IQR = 13 cartões). Elas foram mantidas, porque são jogos reais com várias expulsões, e não erros de registro.</p>
+
+    <figure id="fig1">
+      <div class="grafico" data-fig="fig-distribuicao"><img src="assets/figuras/fig-distribuicao.png" alt="Histograma do número de cartões por partida comparado à distribuição de Poisson" loading="lazy"></div>
+      <figcaption><b>Figura 1.</b> Distribuição de cartões por partida (barras) e frequência esperada sob um modelo de Poisson com a mesma média (linha). Passe o mouse para ver os valores.</figcaption>
+    </figure>
+
+    <p>A matriz de correlação de Spearman (<a href="#fig2">Figura 2</a>) mostra que as variáveis disciplinares quase não se relacionam com o placar e o número de gols (|ρ| ≤ 0,08). Os amarelos de mandante e visitante têm correlação positiva moderada (ρ = 0,25): jogos tensos tendem a punir os dois lados. O público tem correlação fraca e positiva só com os amarelos do visitante (ρ = 0,09), o que antecipa o resultado da RQ2.</p>
+
+    <figure id="fig2">
+      <div class="grafico" data-fig="fig-correlacao"><img src="assets/figuras/fig-correlacao.png" alt="Matriz de correlação de Spearman entre público, gols e cartões" loading="lazy"></div>
+      <figcaption><b>Figura 2.</b> Correlação de Spearman entre variáveis da partida. O público só é considerado nos 907 jogos em que foi registrado.</figcaption>
+    </figure>
+
+    <h3 id="rq1">3.2 RQ1 — Os árbitros punem de forma diferente?</h3>
+    <p>Entre os 25 árbitros com pelo menos 20 partidas (1.277 jogos no total), a média de cartões vai de 3,50 (Ricardo Marques Ribeiro) a 7,07 (Rodrigo José Pereira de Lima) por partida. O teste de Kruskal–Wallis rejeita a hipótese de que todos sigam a mesma distribuição (H = 138,5; p &lt; 0,001), com efeito moderado (ε² = 0,09): o árbitro sozinho explica cerca de 9% da variação na ordem dos cartões entre partidas.</p>
+    <p>Comparar médias de árbitros com números de jogos muito diferentes pode enganar, porque quem apitou poucos jogos tem médias extremas só por acaso. O gráfico de funil (SPIEGELHALTER, 2005) da <a href="#fig3">Figura 3</a> resolve isso: os limites de controle se estreitam conforme o árbitro acumula partidas. Oito árbitros ficam fora da faixa de 99,8%. Três estão <b>acima</b> do esperado, entre eles Braulio da Silva Machado, o mais escalado do período (90 jogos, 6,47 cartões por partida). Cinco estão <b>abaixo</b>, entre eles Anderson Daronco (85 jogos, 3,94). Um desses cinco, Heber Roberto Lopes, apitou 18 partidas e por isso não entra na Tabela 1. Na prática, com o mesmo número de jogos, escalar um ou outro representa uma diferença de cerca de 2,5 cartões por partida.</p>
+
+    <figure id="fig3">
+      <div class="grafico" data-fig="fig-arbitros"><img src="assets/figuras/fig-arbitros.png" alt="Gráfico de funil com a média de cartões por árbitro em função do número de partidas" loading="lazy"></div>
+      <figcaption><b>Figura 3.</b> Gráfico de funil: cada ponto é um árbitro. As linhas tracejadas são os limites de 95% e 99,8% em torno da média da liga sob um modelo de Poisson. Pontos coloridos e nomeados ficam fora da faixa de 99,8%.</figcaption>
+    </figure>
+
+    <div class="tabela-wrap">
+      <table>
+        <caption><b>Tabela 1.</b> Árbitros com 20 ou mais partidas fora dos limites de controle de 99,8%.</caption>
+        <thead><tr><th>Árbitro</th><th class="num">Partidas</th><th class="num">Cartões/jogo</th><th class="num">Expulsões/jogo</th><th>Classificação</th></tr></thead>
+        <tbody>
+          <tr><td>Rodrigo José Pereira de Lima</td><td class="num">28</td><td class="num">7,07</td><td class="num">0,50</td><td>Acima</td></tr>
+          <tr><td>Paulo Cesar Zanovelli da Silva</td><td class="num">43</td><td class="num">6,56</td><td class="num">0,51</td><td>Acima</td></tr>
+          <tr><td>Braulio da Silva Machado</td><td class="num">90</td><td class="num">6,47</td><td class="num">0,36</td><td>Acima</td></tr>
+          <tr><td>Leandro Pedro Vuaden</td><td class="num">73</td><td class="num">4,36</td><td class="num">0,18</td><td>Abaixo</td></tr>
+          <tr><td>Anderson Daronco</td><td class="num">85</td><td class="num">3,94</td><td class="num">0,25</td><td>Abaixo</td></tr>
+          <tr><td>Jean Pierre Goncalves Lima</td><td class="num">33</td><td class="num">3,85</td><td class="num">0,18</td><td>Abaixo</td></tr>
+          <tr><td>Ricardo Marques Ribeiro</td><td class="num">24</td><td class="num">3,50</td><td class="num">0,21</td><td>Abaixo</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Esse resultado não permite dizer que um árbitro é “rigoroso” ou “permissivo” por característica pessoal, já que a escala não é aleatória: árbitros mais experientes costumam receber clássicos e jogos decisivos, que têm mais faltas. Ainda assim, a dispersão observada é grande demais para ser explicada só pelo acaso.</p>
+
+    <h3 id="rq2">3.3 RQ2 — A torcida pesa contra o visitante?</h3>
+    <p>A pandemia criou dois cenários comparáveis. Nas 598 partidas com <b>portões fechados</b>, mandantes e visitantes receberam praticamente o mesmo número de amarelos (2,30 e 2,26 por jogo). A diferença média foi de −0,04 (IC 95%: −0,18 a 0,11) e o teste de Wilcoxon não a distingue de zero (p = 0,51). Nas 907 partidas <b>com público</b>, o visitante recebeu 2,80 amarelos contra 2,52 do mandante, uma diferença de +0,28 (IC 95%: 0,15 a 0,40; p &lt; 0,001). A variação entre os dois cenários é de 0,31 amarelo por jogo (IC 95% <i>bootstrap</i>: 0,12 a 0,50; Mann–Whitney, p = 0,002).</p>
+
+    <figure id="fig4">
+      <div class="grafico" data-fig="fig-temporadas"><img src="assets/figuras/fig-temporadas.png" alt="Amarelos por partida de mandantes e visitantes em cada temporada" loading="lazy"></div>
+      <figcaption><b>Figura 4.</b> Média de amarelos por partida para mandante e visitante em cada temporada, com a proporção de jogos com portões fechados. A diferença a favor do mandante aparece quando o público volta (2022).</figcaption>
+    </figure>
+
+    <p>A <a href="#fig5">Figura 5</a> mostra uma relação de <b>dose-resposta</b>: a diferença contra o visitante cresce com o tamanho do público. Ela fica perto de zero com portões fechados e em jogos com até 10 mil pagantes e chega a +0,43 amarelo por jogo acima de 35 mil. A correlação entre público e diferença disciplinar é fraca, mas significativa (ρ = 0,07; p = 0,04). Esse padrão coincide com a literatura europeia (ENDRICH; GESCHE, 2020; BRYSON <i>et al.</i>, 2021) e é compatível com a pressão social da arquibancada sobre o árbitro.</p>
+
+    <figure id="fig5">
+      <div class="grafico" data-fig="fig-publico"><img src="assets/figuras/fig-publico.png" alt="Diferença média de amarelos entre visitante e mandante por faixa de público, com intervalos de confiança" loading="lazy"></div>
+      <figcaption><b>Figura 5.</b> Diferença média de amarelos (visitante − mandante) por faixa de público, com intervalos de confiança de 95% obtidos por <i>bootstrap</i>. Valores acima de zero indicam que o visitante foi mais punido.</figcaption>
+    </figure>
+
+    <div class="tabela-wrap">
+      <table>
+        <caption><b>Tabela 2.</b> Indicadores por condição de público (médias por partida).</caption>
+        <thead><tr><th>Indicador</th><th class="num">Portões fechados</th><th class="num">Com público</th></tr></thead>
+        <tbody>
+          <tr><td>Partidas</td><td class="num">598</td><td class="num">907</td></tr>
+          <tr><td>Amarelos do mandante</td><td class="num">2,30</td><td class="num">2,52</td></tr>
+          <tr><td>Amarelos do visitante</td><td class="num">2,26</td><td class="num">2,80</td></tr>
+          <tr><td>Diferença (visitante − mandante)</td><td class="num">−0,04</td><td class="num">+0,28</td></tr>
+          <tr><td>Vitórias do mandante</td><td class="num">42,5%</td><td class="num">47,6%</td></tr>
+          <tr><td>Saldo de gols do mandante</td><td class="num">+0,28</td><td class="num">+0,42</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A vantagem esportiva do mandante também cresce com o público: a taxa de vitórias vai de 42,5% para 47,6% e o saldo médio de gols, de +0,28 para +0,42. A comparação entre temporadas, porém, não isola só o efeito da torcida. O total de cartões subiu de 4,72 (2020) para 5,79 (2023) por jogo, possivelmente por mudanças de critério da arbitragem e pelo calendário comprimido de 2020. Por isso a análise se concentra na <i>diferença</i> entre os dois times da mesma partida, que neutraliza esses fatores comuns.</p>
+
+    <h3 id="rq3">3.4 RQ3 — Quando e em que placar os cartões aparecem?</h3>
+    <p>Os cartões se acumulam ao longo do jogo (<a href="#fig6">Figura 6</a>): 65% saem no segundo tempo, o minuto mediano é o 62 e 18,6% acontecem nos acréscimos. Os 15 minutos finais do tempo regulamentar formam a faixa com mais cartões, e os acréscimos do segundo tempo concentram as expulsões: 136 das 447 do período (30%) ocorreram depois do minuto 90. Isso combina com o desgaste físico e com a reação a lances decisivos no fim da partida.</p>
+
+    <figure id="fig6">
+      <div class="grafico" data-fig="fig-minutos"><img src="assets/figuras/fig-minutos.png" alt="Cartões amarelos e expulsões por faixa de 15 minutos" loading="lazy"></div>
+      <figcaption><b>Figura 6.</b> Cartões por faixa de minutos (2020–2023). As faixas de acréscimos são mais curtas que as de 15 minutos, então suas barras devem ser lidas como concentração de eventos num intervalo curto.</figcaption>
+    </figure>
+
+    <p>A <a href="#fig7">Figura 7</a> mostra as taxas de cartões normalizadas pelo tempo de exposição. No primeiro tempo, quem está empatando é muito menos punido (1,47 por 90 minutos) do que quem está perdendo (2,49) ou vencendo (2,40), já que um placar aberto aumenta a intensidade do jogo para os dois lados. No segundo tempo, a maior taxa é a de quem está <b>vencendo</b> (3,78), acima de quem está perdendo (3,45) (χ² = 25,3; p &lt; 0,001). O caso mais extremo é o do <b>visitante que vence na etapa final</b>, com 4,14 cartões por 90 minutos, a maior taxa de todas as combinações. Esse padrão é compatível com o uso de faltas táticas e da cera para segurar o resultado, punidas com amarelo, e com a pressão da torcida local, que deixa o árbitro mais propenso a punir o adversário nesse momento.</p>
+
+    <figure id="fig7">
+      <div class="grafico" data-fig="fig-situacao"><img src="assets/figuras/fig-situacao.png" alt="Taxa de cartões por 90 minutos por situação de placar, lado e tempo de jogo" loading="lazy"></div>
+      <figcaption><b>Figura 7.</b> Cartões por 90 minutos de exposição em cada situação de placar do time punido, por tempo de jogo e lado. As barras de erro são intervalos de confiança de 95% (aproximação de Poisson).</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="conclusao">
+    <h2 id="conclusao">4. Conclusão</h2>
+    <p>As três perguntas de pesquisa tiveram respostas consistentes. <b>(RQ1)</b> Há diferença significativa e prática entre árbitros: oito deles ficam fora dos limites de controle esperados pelo acaso, e a distância entre o mais e o menos rigoroso entre os mais escalados passa de dois cartões por jogo. <b>(RQ2)</b> O viés contra o visitante depende da torcida: desaparece com portões fechados, volta com público e cresce com o tamanho da plateia, o que reproduz no Brasil o experimento natural observado na Europa durante a pandemia. <b>(RQ3)</b> Os cartões se concentram no segundo tempo e nos acréscimos, e o time que está vencendo na etapa final, especialmente fora de casa, é o mais punido por minuto em campo.</p>
+    <p><b>Limitações.</b> Os dados são observacionais e não registram faltas cometidas. Por isso não é possível separar um time mais faltoso de um árbitro mais rigoroso. A escala de árbitros não é aleatória. A classificação de “portões fechados” supõe que o público ausente em 2020 e 2021 corresponde a jogos sem torcida, e uma parte de 2021 teve capacidade reduzida. A exposição por placar usa minutos nominais, então os acréscimos ficam um pouco subestimados. As conclusões valem para associações, não para causalidade.</p>
+    <p><b>Trabalhos futuros.</b> Integrar faltas e posse de bola por partida para modelar a taxa de cartões por falta, ajustar modelos de regressão binomial negativa com efeitos aleatórios de árbitro e de clube, e ampliar a base para temporadas anteriores a 2020, a fim de testar se o viés do mandante mudou após a adoção do VAR em 2019.</p>
+  </section>
+
+  <section aria-labelledby="fair">
+    <h2 id="fair">5. Disponibilidade dos Dados e Declaração FAIR</h2>
+    <div class="fair">
+      <h3>Declaração de Aderência FAIR</h3>
+      <ul>
+        <li><b>Findable (Localizável):</b> repositório público com <code>README.md</code> contendo resumo, palavras-chave padronizadas, autoria, instituição e link permanente para a fonte original no Kaggle. Este artigo traz metadados <code>citation_*</code> e Dublin Core no cabeçalho HTML.</li>
+        <li><b>Accessible (Acessível):</b> todo o código e os dados estão no GitHub, sem autenticação. O arquivo bruto (1,34 MB) está versionado em <code>data/raw/</code>, e a função <code>baixar_dados_brutos()</code> busca a fonte original pelo endpoint público do Kaggle, sem credenciais.</li>
+        <li><b>Interoperable (Interoperável):</b> dados tratados em formatos abertos (<code>.parquet</code> e <code>.csv.gz</code>), dicionário de variáveis em <code>data/data_dictionary.md</code> e tabelas de resultados em CSV e JSON em <code>docs/assets/tabelas/</code>.</li>
+        <li><b>Reusable (Reutilizável):</b> código sob licença MIT; dados derivados e texto sob CC-BY 4.0 (a fonte original é CC0). Dependências travadas em <code>requirements.txt</code>, semente fixa nas reamostragens e relatório de rastreabilidade do ETL.</li>
+      </ul>
+      <h3>Reprodução integral do pipeline</h3>
+      <p>Os comandos abaixo recriam o ambiente, regeneram <code>data/processed/</code> com o ETL e as figuras e tabelas de <code>docs/assets/</code>, e abrem o notebook. No Windows, o ambiente é ativado com <code>.venv\Scripts\activate</code>.</p>
+<pre><code>git clone https://github.com/NatanBraslavsky/g2-projetopratico.git
+cd g2-projetopratico
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m src.etl
+python -m src.figuras
+jupyter notebook notebooks/analise_exploratoria.ipynb</code></pre>
+    </div>
+  </section>
+
+  <section aria-labelledby="referencias">
+    <h2 id="referencias">6. Referências</h2>
+    <ol class="referencias">
+      <li>BRAL, Lucas. <b>brasileirao_cartoes_20-23</b>: data from the Brazilian Football Championship Série A from 2020 to 2023. Kaggle, 2024. Disponível em: &lt;<a href="https://www.kaggle.com/datasets/lucasbral/brasileirao-cartoes-20-23">https://www.kaggle.com/datasets/lucasbral/brasileirao-cartoes-20-23</a>&gt;. Acesso em: 16 nov. 2026.</li>
+      <li>BRYSON, Alex <i>et al.</i> Causal effects of an absent crowd on performances and refereeing decisions during Covid-19. <b>Economics Letters</b>, v. 198, p. 109664, 2021.</li>
+      <li>ENDRICH, Marek; GESCHE, Tobias. Home-bias in referee decisions: evidence from “Ghost Matches” during the Covid19-Pandemic. <b>Economics Letters</b>, v. 197, p. 109621, 2020.</li>
+      <li>McKINNEY, Wes. Data structures for statistical computing in Python. In: PYTHON IN SCIENCE CONFERENCE, 9., 2010, Austin. <b>Proceedings</b> [...]. Austin: SciPy, 2010. p. 56-61.</li>
+      <li>PETTERSSON-LIDBOM, Per; PRIKS, Mikael. Behavior under social pressure: empty Italian stadiums and referee bias. <b>Economics Letters</b>, v. 108, n. 2, p. 212-214, 2010.</li>
+      <li>PLOTLY TECHNOLOGIES INC. <b>Collaborative data science</b>. Montréal, 2015. Disponível em: &lt;<a href="https://plot.ly">https://plot.ly</a>&gt;. Acesso em: 16 nov. 2026.</li>
+      <li>SPIEGELHALTER, David J. Funnel plots for comparing institutional performance. <b>Statistics in Medicine</b>, v. 24, n. 8, p. 1185-1202, 2005.</li>
+      <li>SUTTER, Matthias; KOCHER, Martin G. Favoritism of agents: the case of referees’ home bias. <b>Journal of Economic Psychology</b>, v. 25, n. 4, p. 461-469, 2004.</li>
+      <li>VIRTANEN, Pauli <i>et al.</i> SciPy 1.0: fundamental algorithms for scientific computing in Python. <b>Nature Methods</b>, v. 17, p. 261-272, 2020.</li>
+      <li>WILKINSON, Mark D. <i>et al.</i> The FAIR Guiding Principles for scientific data management and stewardship. <b>Scientific Data</b>, v. 3, p. 160018, 2016.</li>
+    </ol>
+  </section>
+
+  <footer class="rodape">
+    Natan Braslavsky · Universidade La Salle · 2026. Texto e dados derivados sob licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt_BR">CC-BY 4.0</a>; código sob licença MIT.
+  </footer>
+</article>
+
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<script src="assets/figuras.js"></script>
+<script>
+  (function () {
+    if (!window.Plotly || !window.FIGURAS) return;
+    var config = { responsive: true, displaylogo: false, modeBarButtonsToRemove: ["lasso2d", "select2d"] };
+    var estreito = window.matchMedia("(max-width: 640px)");
+    function ajustar(layout) {
+      var copia = JSON.parse(JSON.stringify(layout));
+      copia.autosize = true;
+      delete copia.width;
+      if (estreito.matches) {
+        copia.margin = { l: 52, r: 12, t: 120, b: 72 };
+        copia.font = Object.assign({}, copia.font, { size: 11 });
+        copia.height = Math.max(440, copia.height || 440);
+        if (copia.xaxis2) {
+          copia.legend = Object.assign({}, copia.legend, { y: 1.14 });
+          copia.xaxis2 = Object.assign({}, copia.xaxis2, { title: { text: "" } });
+          copia.xaxis = Object.assign({}, copia.xaxis, { title: { text: "" } });
+        }
+      }
+      return copia;
+    }
+    document.querySelectorAll(".grafico[data-fig]").forEach(function (alvo) {
+      var spec = window.FIGURAS[alvo.dataset.fig];
+      if (!spec) return;
+      var layout = ajustar(spec.layout);
+      var dados = spec.data.map(function (traco) {
+        if (estreito.matches && traco.mode === "markers+text") {
+          return Object.assign({}, traco, { mode: "markers" });
+        }
+        return traco;
+      });
+      alvo.innerHTML = "";
+      alvo.style.height = (layout.height || 440) + "px";
+      Plotly.newPlot(alvo, dados, layout, config);
+    });
+  })();
+</script>
+</body>
+</html>

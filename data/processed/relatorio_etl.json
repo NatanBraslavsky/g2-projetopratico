@@ -1,0 +1,62 @@
+[
+  {
+    "etapa": "leitura",
+    "linhas": 1520,
+    "colunas": 17
+  },
+  {
+    "etapa": "conversao_tipos",
+    "datas_invalidas": 0,
+    "temporadas_invalidas": 0,
+    "publico_ausente": 613,
+    "publico_valor_textual_no_data": 613
+  },
+  {
+    "etapa": "remocao_duplicatas",
+    "removidas": 0
+  },
+  {
+    "etapa": "descarte_linhas_invalidas",
+    "removidas": 0,
+    "partida_ids": []
+  },
+  {
+    "etapa": "checagem_placar_vs_lista_gols",
+    "divergentes": 0
+  },
+  {
+    "etapa": "partidas_final",
+    "linhas": 1520,
+    "por_temporada": {
+      "2020": 380,
+      "2021": 380,
+      "2022": 380,
+      "2023": 380
+    },
+    "por_torcida": {
+      "com_publico": 907,
+      "portoes_fechados": 598,
+      "desconhecido": 15
+    }
+  },
+  {
+    "etapa": "eventos_final",
+    "linhas": 11558,
+    "por_tipo": {
+      "amarelo": 7474,
+      "gol": 3637,
+      "vermelho": 298,
+      "segundo_amarelo": 149
+    },
+    "em_acrescimo": 1922
+  },
+  {
+    "etapa": "persistencia",
+    "arquivos": [
+      "data/processed/partidas.parquet",
+      "data/processed/partidas.csv.gz",
+      "data/processed/eventos.parquet",
+      "data/processed/eventos.csv.gz"
+    ]
+  }
+]

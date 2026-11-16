@@ -1,0 +1,61 @@
+{
+  "descritivo_cartoes": {
+    "n": 1520,
+    "media": 5.211184210526316,
+    "mediana": 5.0,
+    "desvio_padrao": 2.5792520347706174,
+    "variancia": 6.652541058868369,
+    "coef_variacao": 0.4949454731538112,
+    "q1": 3.0,
+    "q3": 7.0,
+    "iqr": 4.0,
+    "minimo": 0,
+    "maximo": 16,
+    "assimetria": 0.554157875839184,
+    "indice_dispersao": 1.2765891187324734
+  },
+  "outliers_cartoes": 6,
+  "kruskal_arbitros": {
+    "arbitros": 25,
+    "partidas": 1277,
+    "H": 138.45433224565187,
+    "p_valor": 4.474124493834105e-18,
+    "epsilon2": 0.09141719827927465
+  },
+  "teste_vies_torcida": {
+    "diferenca_das_medias": 0.30964847912741106,
+    "ic95_inf": 0.12103188504128058,
+    "ic95_sup": 0.5016755133797701,
+    "mann_whitney_U": 296293.0,
+    "p_valor_mann_whitney": 0.002039210302668073,
+    "p_valor_wilcoxon_fechados": 0.5088897516255955,
+    "p_valor_wilcoxon_publico": 3.629386937918213e-05
+  },
+  "correlacao_publico_vies": {
+    "partidas": 907,
+    "rho_spearman": 0.06838755212618312,
+    "p_valor": 0.03947886511681114
+  },
+  "momento_cartoes": {
+    "cartoes": 7921,
+    "fracao_segundo_tempo": 0.6502966797121575,
+    "fracao_acrescimos": 0.18570887514202752,
+    "minuto_mediano": 62.0
+  },
+  "qui2_situacao_1t": {
+    "qui2": 179.41954102130626,
+    "p_valor": 1.0953217066153802e-39,
+    "taxa_perdendo": 2.488891199642869,
+    "taxa_empatando": 1.4726250534039251,
+    "taxa_vencendo": 2.4001462946312917,
+    "razao_perdendo_vencendo": 1.0369747899159665
+  },
+  "qui2_situacao_2t": {
+    "qui2": 25.258114830988106,
+    "p_valor": 3.2754430502951276e-06,
+    "taxa_perdendo": 3.451575059559293,
+    "taxa_empatando": 3.1964937362194585,
+    "taxa_vencendo": 3.7846403849132013,
+    "razao_perdendo_vencendo": 0.9119955156950673
+  }
+}

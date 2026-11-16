@@ -1,0 +1,13 @@
+tempo,lado,situacao_placar,minutos,cartoes,cartoes_por_90,ic95_inf,ic95_sup
+1,mandante,perdendo,8564.68,247,2.5955,2.2718,2.9192
+1,mandante,empatando,47608.86,748,1.414,1.3127,1.5154
+1,mandante,vencendo,13746.46,342,2.2391,2.0018,2.4764
+1,visitante,perdendo,13746.46,370,2.4224,2.1756,2.6693
+1,visitante,empatando,47608.86,810,1.5312,1.4258,1.6367
+1,visitante,vencendo,8564.68,253,2.6586,2.331,2.9862
+2,mandante,perdendo,15712.44,633,3.6258,3.3433,3.9082
+2,mandante,empatando,24495.59,812,2.9834,2.7782,3.1886
+2,mandante,vencendo,26711.67,1061,3.5748,3.3597,3.7899
+2,visitante,perdendo,26711.67,994,3.3491,3.1409,3.5573
+2,visitante,empatando,24495.59,928,3.4096,3.1902,3.629
+2,visitante,vencendo,15712.44,723,4.1413,3.8394,4.4432
