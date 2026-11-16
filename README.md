@@ -11,7 +11,8 @@
 
 | | |
 |---|---|
-| **Autor** | Natan Braslavsky |
+| **Autor** | Natan Pereira Braslavsky, Pedro Duarte Machado |
+| **Professor** | Alexandre Neves Louzada |
 | **Instituição** | Universidade La Salle |
 | **Curso** | Bacharelado em Sistemas de Informação — 6º período |
 | **Disciplina** | Linguagem de Programação (Análise e Visualização de Dados com Python) |
